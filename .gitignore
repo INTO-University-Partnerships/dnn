@@ -1,4 +1,3 @@
 .vagrant
 *.exe
-*.msi
-website/
+site/
