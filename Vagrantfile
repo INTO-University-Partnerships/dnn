@@ -30,5 +30,7 @@ Vagrant.configure(2) do |config|
     config.vm.boot_timeout = 600
 
     config.vm.network "private_network", ip: "10.0.0.10"
+    config.vm.network :forwarded_port, guest: 3389, host: 3389, id: "rdp", auto_correct: true
     config.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
+    #config.vm.synced_folder "website", "c:\website", type: "rsync", rsync__exclude: [".git/", ".idea/"]
 end
