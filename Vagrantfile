@@ -32,5 +32,12 @@ Vagrant.configure(2) do |config|
     config.vm.network "private_network", ip: "10.0.0.10"
     config.vm.network :forwarded_port, guest: 3389, host: 3389, id: "rdp", auto_correct: true
     config.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
-    #config.vm.synced_folder "website", "c:\website", type: "rsync", rsync__exclude: [".git/", ".idea/"]
+
+    config.vm.synced_folder "website", "c:\\website",
+        disabled: true,
+        type: "rsync",
+        rsync__exclude: [".git/"],
+        rsync__chown: false,
+        rsync__verbose: true,
+        rsync__args: ["--verbose", "--archive", "--delete", "-z", "--copy-links", "--chmod=gu=rwX,o=rX"]
 end
