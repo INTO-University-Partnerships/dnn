@@ -1,8 +1,9 @@
 # Vagrant .NET
 
 * Based on [this repo](https://github.com/kwilson/vagrant-octopus)
-* A Vagrant environment which provisions .NET on a Windows guest
+* A Vagrant environment which provisions .NET on a Windows guest and allows DNN 7.4.2 to be installed
 * Vagrant 1.9.1 (or possibly later) is required
+* The requirements for DNN 7.4.2 are [here](http://www.dnnsoftware.com/platform/start/install#2047)
 
 ## Vagrant Remote desktop
 
@@ -29,3 +30,16 @@ In `C:\Windows\System32\inetsrv` ...
     .\appcmd.exe start site "website"
     .\appcmd.exe stop site "website"
     .\appcmd.exe set site "website" /virtualDirectoryDefaults.userName:vagrant /virtualDirectoryDefaults.password:vagrant
+
+## DNN
+
+To [install DNN](http://www.dnnsoftware.com/wiki/how-to-install-dotnetnuke) 7.4.2 ...
+
+* Extract `DNN_Platform_07.04.02_Install.zip` into `website/`
+* Run `vagrant up`
+* Stop IIS
+* Run `vagrant rsync` or `vagrant rsync-auto` to sync the DNN files to the Windows guest
+* Start IIS
+* Create a new/blank database (called e.g. `dnn`)
+* Visit `http://10.0.0.10` in a browser
+* Change the database install options to connect to the previously created new/blank database with the credentials in `scripts/install-sql-server.cmd`, i.e. `sa` and `#SAPassword!`
