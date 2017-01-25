@@ -47,5 +47,5 @@ Vagrant.configure(2) do |config|
         rsync__exclude: [".git/"],
         rsync__chown: false,
         rsync__verbose: true,
-        rsync__args: ["--verbose", "--archive", "--delete", "-z", "--copy-links", "--chmod=gu=rwX,o=rX"]
+        rsync__args: ["--verbose", "--archive", "-z", "--copy-links", "--chmod=gu=rwX,o=rX"]
 end
