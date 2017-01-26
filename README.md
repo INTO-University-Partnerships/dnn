@@ -20,7 +20,6 @@ Unison is used to synchronize files (two-way) in the `website/` directory betwee
 * Install with `vagrant plugin install vagrant-unison2`
 * On an Ubuntu Xenial host, `apt install unison` will install Unison 2.48.3 (compiled with OCaml 4.02)
 * On the Windows guest, Unison 2.48.3 (compiled with OCaml 4.02) is provisioned automatically
-* If `vagrant unison-sync-polling` reports `Unison not running in VM`, it should be possible to run Unison directly
 
 ## IIS
 
