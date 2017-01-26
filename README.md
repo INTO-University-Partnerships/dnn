@@ -13,13 +13,13 @@ Use remote desktop instead.
     apt install rdesktop
     vagrant rdp -- -g 70%
 
-## Cygwin and rsync
+## Vagrant Unison
 
-* Cygwin needs to be installed on the Windows guest (in particular `rsync`) using `setup-x86_64.exe`
-* Cygwin's `bin/` directory needs to be prepended to the Windows path (so Vagrant can actually find `rsync`)
-* After Cygwin is installed, enable the rsync shared folder in `Vagrantfile` (i.e. set `disabled: false`) then `vagrant reload`
-* Use `vagrant rsync-auto` to sync automatically
-* Permissions are tricky to get right using `rsync` but [this helped](http://docs.drupalvm.com/en/latest/extras/syncing-folders/#options)
+* [Vagrant Unison2 plugin](https://github.com/dcosson/vagrant-unison2)
+* `vagrant plugin install vagrant-unison2`
+* On an Ubuntu Xenial host, `sudo apt install unison` will install 2.48.3
+* On the Windows guest, version 2.48.3 is provisioned automatically
+* On the Windows guest, in IIS, in "Application Pools" -> "DefaultAppPool" -> "Advanced Settings" -> "Process Model" -> "Identity", set the identity to the `vagrant` account
 
 ## IIS appcmd
 

@@ -26,6 +26,8 @@ Vagrant.configure(2) do |config|
     config.vm.guest = :windows
     config.vm.communicator = "winrm"
 
+    config.vm.provision "file", source: "bin/unison.exe", destination: "C:\\Windows"
+
     config.vm.provision :shell, inline: "rm c:\\tmp\\*"
     config.vm.provision :shell, path: "scripts/install-iis.cmd", upload_path: "c:\\tmp\\install-iis.cmd"
     config.vm.provision :shell, path: "scripts/delete-default-iis-website.ps1", upload_path: "c:\\tmp\\delete-default-iis-website.ps1"
@@ -41,11 +43,8 @@ Vagrant.configure(2) do |config|
     config.vm.network :forwarded_port, guest: 3389, host: 3389, id: "rdp", auto_correct: true
     config.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
 
-    config.vm.synced_folder "website", "c:\\website",
-        disabled: true,
-        type: "rsync",
-        rsync__exclude: [".git/"],
-        rsync__chown: false,
-        rsync__verbose: true,
-        rsync__args: ["--verbose", "--archive", "-z", "--copy-links", "--chmod=gu=rwX,o=rX"]
+    config.unison.host_folder = "website/"
+    config.unison.guest_folder = "../../website"
+    config.unison.ignore = "Name {.git}"
+    config.unison.perms = 0
 end
