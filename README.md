@@ -41,3 +41,4 @@ To [install DNN](http://www.dnnsoftware.com/wiki/how-to-install-dotnetnuke) 7.4.
 * Visit `http://10.0.0.10` in a browser
 * Change the DNN database install settings to connect to the previously created new/blank database with the credentials in `scripts/install-sql-server.cmd`, i.e. `sa` and `#SAPassword!`
 * See `DNN_database_install_settings.png` for a screenshot of DNN database install settings
+* Only once DNN is installed, run `vagrant unison-sync-polling`
