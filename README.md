@@ -2,7 +2,7 @@
 
 * A Vagrant environment which provisions IIS, .NET, SQL Server on a Windows guest (and allows DNN 7.4.2 to be installed)
 * Based on [this repo](https://github.com/kwilson/vagrant-octopus)
-* Vagrant 1.9.1 (or possibly later) is required
+* Vagrant 1.8.7 or 1.9.1 (or possibly later) is required
 
 ## Vagrant remote desktop
 
